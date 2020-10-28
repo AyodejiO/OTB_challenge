@@ -1,3 +1,7 @@
+def isString(str)
+    raise "Invalid String" if str.class != String
+end
+
 def batchJobs(str)
     begin
         isString(str)
