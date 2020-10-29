@@ -61,16 +61,16 @@ class JobQueue
 end
 
 # TESTS
+cases = []
 
-
-case0 = JobQueue.new(%q(
+cases << JobQueue.new(%q(
     a =>
     b =>
     c =>
 ))
 
 # Typical Example that should work
-case1 = JobQueue.new(%q(
+cases << JobQueue.new(%q(
     a => b
     b => c
     f =>
@@ -80,25 +80,23 @@ case1 = JobQueue.new(%q(
 ))
     
 # Job f depends on F (Unresolved Dependency)
-case2 = JobQueue.new %q(
+cases << JobQueue.new(%q(
     a => b
     b => c
     f => f
     c =>
     g => h
     h =>
-)
+))
 
 # Number supplied
-case3 = JobQueue.new 0.45
+cases << JobQueue.new(0.45)
 
 # Boolean supplied
-case4 = JobQueue.new true
+cases << JobQueue.new(true)
 
-case4 = JobQueue.new ''
+cases << JobQueue.new('')
 
-puts 'case0 '+case0.batchJobs()
-puts 'case1 '+case1.batchJobs()
-puts 'case2 '+case2.batchJobs()
-puts 'case3 '+case3.batchJobs()
-puts 'case4 '+case4.batchJobs()
+# Add more cases
+
+cases.each_with_index { |v, i| puts "case #{i}...#{v.batchJobs()}" }
