@@ -63,6 +63,12 @@ end
 # TESTS
 cases = []
 
+# Typical Example that should work
+cases << JobQueue.new(%q(
+    a =>
+))
+
+# Typical Example that should work
 cases << JobQueue.new(%q(
     a =>
     b =>
@@ -71,22 +77,36 @@ cases << JobQueue.new(%q(
 
 # Typical Example that should work
 cases << JobQueue.new(%q(
-    a => b
+    a =>
     b => c
-    f =>
     c =>
-    g => h
-    h =>
+))
+
+# Typical Example that should work
+cases << JobQueue.new(%q(
+    a =>
+    b => c
+    c => f
+    d => a
+    e => b
+    f =>
 ))
     
-# Job f depends on F (Unresolved Dependency)
+# Job c depends on c (Unresolved Dependency)
 cases << JobQueue.new(%q(
-    a => b
+    a =>
+    b =>
+    c => c
+))
+
+# Example that should fail (Circular Dependency)
+cases << JobQueue.new(%q(
+    a =>
     b => c
-    f => f
-    c =>
-    g => h
-    h =>
+    c => f
+    d => a
+    e =>
+    f => b
 ))
 
 # Number supplied

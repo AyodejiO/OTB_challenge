@@ -1,4 +1,4 @@
-# [On THe Beach](https://www.onthebeach.co.uk/) Ruby Challenge
+# [On The Beach](https://www.onthebeach.co.uk/) Ruby Challenge
 ### The Challenge
 
 Imagine we have a list of jobs, each represented by a character. Because certain jobs must be
@@ -48,7 +48,7 @@ before d containing all six jobs abcdef.
     b => c
     c => f
     d => a
-    e => b
-    f =>
+    e =>
+    f => b
     ```
     The result should be an error stating that jobs can’t have circular dependencies.
