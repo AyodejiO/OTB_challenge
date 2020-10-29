@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../JD Group"
+		},
+		{
+			"path": "../OTB"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../sites/ruby/tests/Syft"
+		}
+	],
+	"settings": {}
+}
